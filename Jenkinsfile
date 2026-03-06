@@ -52,6 +52,23 @@ pipeline{
                 sh "JENKINS_NODE_COOKIE=dontKillMe kubectl port-forward -n ingress-nginx service/my-ingress-ingress-nginx-controller 9090:80 --address=0.0.0.0 &"
             }
         }
-        
     }
+    post{
+        success{
+            script{
+                emailtext from: "arpanel07@gmail.com"
+                subject: "Build Sucess"
+                body: "BUild succesfully yayyy! you can access app in port 9090"
+                to: "stfu.arpanel@gmail.com"
+            }
+        }
+        failure{
+             script{
+                emailtext from: "arpanel07@gmail.com"
+                subject: "Build failed"
+            b    ody: "BUild failed oops! check logs and try again"
+                to: "stfu.arpanel@gmail.com"
+        }
+    }
+}
 }
