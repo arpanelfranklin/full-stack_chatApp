@@ -49,7 +49,7 @@ pipeline{
             }
         stage("port-forward"){
             steps{
-                sh "kubectl port-forward -n ingress-nginx service/my-ingress-ingress-nginx-controller 9090:80 --address=0.0.0.0 &"
+                sh "JENKINS_NODE_COOKIE=dontKillMe kubectl port-forward -n ingress-nginx service/my-ingress-ingress-nginx-controller 9090:80 --address=0.0.0.0 &"
             }
         }
         
