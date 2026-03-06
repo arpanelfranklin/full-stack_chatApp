@@ -39,9 +39,19 @@ pipeline{
                 sh "kubectl apply -f ./k8s/mongodb-pvc.yml"
                 sh "kubectl apply -f ./k8s/mongodb-statefulset.yml"
                 sh "kubectl apply -f ./k8s/mongodb-service.yml"
-        
+                sh "kubectl apply -f ./k8s/backend-deployment.yml"
+                sh "kubectl apply -f ./k8s/backend-service.yml"
+                sh "kubectl apply -f ./k8s/fronted-deployment.yml"
+                sh "kubectl apply -f ./k8s/frontend-service.yml"
+                sh "kubectl apply -f ./k8s/chat-app-ingress.yml"
+                
                 }
             }
+        stage("port-forward"){
+            steps{
+                sh "kubectl port-forward with-namespace ingress-nginx service/my-ingress-ingress-nginx-controller 9090:80"
+            }
+        }
         
     }
 }
