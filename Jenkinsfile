@@ -66,7 +66,7 @@ pipeline{
              script{
                 emailtext from: "arpanel07@gmail.com"
                 subject: "Build failed"
-            b    ody: "BUild failed oops! check logs and try again"
+                body: "BUild failed oops! check logs and try again"
                 to: "stfu.arpanel@gmail.com"
         }
     }
