@@ -42,7 +42,7 @@ pipeline{
                 sh "kubectl apply -f ./k8s/backend-deployment.yml"
                 sh "kubectl apply -f ./k8s/backend-service.yml"
                 sh "kubectl apply -f ./k8s/fronted-deployment.yml"
-                sh "kubectl apply -f ./k8s/frontend-service.yml"
+                sh "kubectl apply -f ./k8s/fronend-service.yml"
                 sh "kubectl apply -f ./k8s/chat-app-ingress.yml"
                 
                 }
