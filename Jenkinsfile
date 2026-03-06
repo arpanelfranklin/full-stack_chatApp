@@ -29,6 +29,19 @@ pipeline{
                 }
             }
         }
+        stage("deploy"){
+            steps{
+                sh "kubectl apply -f ./k8s/namespace.yml"
+                sh "kubectl apply -f ./k8s/configMap.yml"
+                sh "kubectl apply -f ./k8s/namespace.yml"
+                sh "kubectl apply -f ./k8s/chat-app-secret.yml"
+                sh "kubectl apply -f ./k8s/mongodb-pv.yml"
+                sh "kubectl apply -f ./k8s/mongodb-pvc.yml"
+                sh "kubectl apply -f ./k8s/mongodb-statefulset.yml"
+                sh "kubectl apply -f ./k8s/mongodb-service.yml"
+        
+                }
+            }
         
     }
 }
