@@ -12,6 +12,11 @@ pipeline{
                 sh "docker build -t chat-app-backend:v${BUILD_NUMBER} ./backend"
             } 
         }
+        stage("trivy"){
+            steps{
+                sh "trivy fs . -o result.json"
+            }
+        }
         stage("Docker-Push"){
             steps{
                 withCredentials([usernamePassword(
@@ -59,6 +64,7 @@ pipeline{
                 emailext from: "arpanel07@gmail.com",
                 subject: "Build Sucess",
                 body: "BUild succesfully yayyy! you can access app in port 9090",
+                attachmentsPattern: '**/result.json',
                 to: "stfu.arpanel@gmail.com"
             }
         }
@@ -67,6 +73,7 @@ pipeline{
                 emailext from: "arpanel07@gmail.com",
                 subject: "Build failed",
                 body: "BUild failed oops! check logs and try again",
+                attachmentsPattern: '**/result.json',
                 to: "stfu.arpanel@gmail.com"
         }
     }
