@@ -16,14 +16,14 @@ pipeline{
             steps{
                 withCredentials([usernamePassword(
                     credentialsId: "dockerHubCreds",
-                    username: "dockerHubUser",
-                    password: "dockerHubPass"
+                    usernameVariable: "dockerHubUser",
+                    passwordVariable: "dockerHubPass"
                     )]){
-                    sh "docker login -u ${env.username} -p ${env.passowrd}"
-                    sh "docker image tag chat-app-frontend:v${env.BUILD_NUMBER} ${env.username}/chat-app-frontend:v${env.BUILD_NUMBER}"
-                    sh "docker image tag chat-app-backend:v${env.BUILD_NUMBER} ${env.username}/chat-app-backend:v${env.BUILD_NUMBER}"
-                    sh "docker push ${env.username}/chat-app-frontend:v${env.BUILD_NUMBER}"
-                    sh "docker push ${env.username}/chat-app-backend:v${env.BUILD_NUMBER}"
+                    sh "docker login -u ${env.usernameVariable} -p ${env.passowrdVariable}"
+                    sh "docker image tag chat-app-frontend:v${env.BUILD_NUMBER} ${env.usernameVariable}/chat-app-frontend:v${env.BUILD_NUMBER}"
+                    sh "docker image tag chat-app-backend:v${env.BUILD_NUMBER} ${env.usernameVariable}/chat-app-backend:v${env.BUILD_NUMBER}"
+                    sh "docker push ${env.usernameVariable}/chat-app-frontend:v${env.BUILD_NUMBER}"
+                    sh "docker push ${env.usernameVariable}/chat-app-backend:v${env.BUILD_NUMBER}"
                 }
             }
         }
