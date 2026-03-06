@@ -56,17 +56,17 @@ pipeline{
     post{
         success{
             script{
-                emailtext from: "arpanel07@gmail.com"
-                subject: "Build Sucess"
-                body: "BUild succesfully yayyy! you can access app in port 9090"
+                emailext from: "arpanel07@gmail.com",
+                subject: "Build Sucess",
+                body: "BUild succesfully yayyy! you can access app in port 9090",
                 to: "stfu.arpanel@gmail.com"
             }
         }
         failure{
              script{
-                emailtext from: "arpanel07@gmail.com"
-                subject: "Build failed"
-                body: "BUild failed oops! check logs and try again"
+                emailext from: "arpanel07@gmail.com",
+                subject: "Build failed",
+                body: "BUild failed oops! check logs and try again",
                 to: "stfu.arpanel@gmail.com"
         }
     }
