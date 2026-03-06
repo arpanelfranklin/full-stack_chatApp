@@ -19,11 +19,11 @@ pipeline{
                     usernameVariable: "dockerHubUser",
                     passwordVariable: "dockerHubPass"
                     )]){
-                    sh "docker login -u ${env.usernameVariable} -p ${env.passowrdVariable}"
-                    sh "docker image tag chat-app-frontend:v${env.BUILD_NUMBER} ${env.usernameVariable}/chat-app-frontend:v${env.BUILD_NUMBER}"
-                    sh "docker image tag chat-app-backend:v${env.BUILD_NUMBER} ${env.usernameVariable}/chat-app-backend:v${env.BUILD_NUMBER}"
-                    sh "docker push ${env.usernameVariable}/chat-app-frontend:v${env.BUILD_NUMBER}"
-                    sh "docker push ${env.usernameVariable}/chat-app-backend:v${env.BUILD_NUMBER}"
+                    sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
+                    sh "docker image tag chat-app-frontend:v${env.BUILD_NUMBER} ${env.dockerHubUser}/chat-app-frontend:v${env.BUILD_NUMBER}"
+                    sh "docker image tag chat-app-backend:v${env.BUILD_NUMBER} ${env.dockerHubUser}/chat-app-backend:v${env.BUILD_NUMBER}"
+                    sh "docker push ${env.dockerHubUser}/chat-app-frontend:v${env.BUILD_NUMBER}"
+                    sh "docker push ${env.dockerHubUser}/chat-app-backend:v${env.BUILD_NUMBER}"
                 }
             }
         }
