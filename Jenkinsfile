@@ -25,7 +25,7 @@ pipeline{
                     sh "docker push ${env.dockerHubUser}/chat-app-frontend:v${env.BUILD_NUMBER}"
                     sh "docker push ${env.dockerHubUser}/chat-app-backend:v${env.BUILD_NUMBER}"
                     sh "sed -i 's|image: ${env.dockerHubUser}/chat-app-backend.*|image: ${env.dockerHubUser}/chat-app-backend:v${env.BUILD_NUMBER}|g' ./k8s/backend-deployment.yml"
-                    sh "sed -i 's|image: ${env.dockerHubUser}/chat-app-frontend.*|image: ${env.dockerHubUser}/chat-app-frontend:v${env.BUILD_NUMBER}|g' ./k8s/frontend-deployment.yml"
+                    sh "sed -i 's|image: ${env.dockerHubUser}/chat-app-frontend.*|image: ${env.dockerHubUser}/chat-app-frontend:v${env.BUILD_NUMBER}|g' ./k8s/fronted-deployment.yml"
                 }
             }
         }
