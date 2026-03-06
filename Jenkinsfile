@@ -37,26 +37,10 @@ pipeline{
         stage("deploy"){
             steps{
                 sh "kubectl apply -f ./k8s/namespace.yml"
-                sh "kubectl apply -f ./k8s/configMap.yml"
-                sh "kubectl apply -f ./k8s/namespace.yml"
-                sh "kubectl apply -f ./k8s/chat-app-secret.yml"
-                sh "kubectl apply -f ./k8s/mongodb-pv.yml"
-                sh "kubectl apply -f ./k8s/mongodb-pvc.yml"
-                sh "kubectl apply -f ./k8s/mongodb-statefulset.yml"
-                sh "kubectl apply -f ./k8s/mongodb-service.yml"
-                sh "kubectl apply -f ./k8s/backend-deployment.yml"
-                sh "kubectl apply -f ./k8s/backend-service.yml"
-                sh "kubectl apply -f ./k8s/fronted-deployment.yml"
-                sh "kubectl apply -f ./k8s/fronend-service.yml"
-                sh "kubectl apply -f ./k8s/chat-app-ingress.yml"
+                sh "kubectl apply -f ./k8s/.
                 
                 }
             }
-        stage("port-forward"){
-            steps{
-                sh "JENKINS_NODE_COOKIE=dontKillMe kubectl port-forward -n ingress-nginx service/my-ingress-ingress-nginx-controller 9090:80 --address=0.0.0.0 &"
-            }
-        }
     }
     post{
         success{
