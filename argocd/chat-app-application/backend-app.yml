@@ -1,10 +1,10 @@
 kind: Application
-apiVerison: argoproj.io/v1alpha1
+apiVersion: argoproj.io/v1alpha1
 metadata:
   name: backend-app
   namespace: argocd
 spec:
-  porject: chat-app
+  project: chat-app
   source:
     repoURL: https://github.com/arpanelfranklin/full-stack_chatApp.git
     targetRevision: main
@@ -14,5 +14,5 @@ spec:
     namespace: chat-app
   syncPolicy:
     automated:
-      purne: true
+      prune: true
       selfHeal: true

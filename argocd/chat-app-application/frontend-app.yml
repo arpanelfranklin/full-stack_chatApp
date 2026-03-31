@@ -14,5 +14,5 @@ spec:
     namespace: chat-app
   syncPolicy:
     automated:
-      purne: true
+      prune: true
       selfHeal: true
