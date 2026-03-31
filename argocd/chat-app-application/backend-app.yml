@@ -1,0 +1,18 @@
+kind: Application
+apiVerison: argoproj.io/v1alpha1
+metadata:
+  name: backend-app
+  namespace: argocd
+spec:
+  porject: chat-app
+  source:
+    repoURL: https://github.com/arpanelfranklin/full-stack_chatApp.git
+    targetRevision: main
+    path: k8s/backend
+  destinations:
+    server: https://kubernetes.default.svc
+    namespace: chat-app
+  syncPolicy:
+    automated:
+      purne: true
+      selfHeal: true
