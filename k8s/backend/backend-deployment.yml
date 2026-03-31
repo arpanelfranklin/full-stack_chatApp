@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: arpanel/chat-app-backend:latest
+          image: arpanel/chat-app-backend:v11
           ports: 
             - containerPort: 5001
           env:
