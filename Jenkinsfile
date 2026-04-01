@@ -7,7 +7,7 @@ pipeline{
     stages{
         stage(Git pull){
             steps{
-                git url : "https://github.com/arpanelfranklin/full-stack_chatApp.git" branch: "main"
+                git url: "https://github.com/arpanelfranklin/full-stack_chatApp.git", branch: "main"
             }
         }
         stage("docker build"){
